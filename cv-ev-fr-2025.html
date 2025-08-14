@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            font-size: 14px;
+        }
+
+        .resume-container {
+            max-width: 340mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            min-height: 297mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Section */
+        .header {
+            background: #e8e8e8;
+            padding: 30px 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .photo-container {
+            flex-shrink: 0;
+        }
+
+        .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #666;
+            overflow: hidden;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .summary {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+            max-width: 600px;
+        }
+
+        /* Contact Info */
+        .contact-section {
+            padding: 20px 40px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            width: 20px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Main Content - Two Column Layout */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        .left-column {
+            flex: 2;
+            padding: 30px 40px;
+            border-right: 1px solid #ddd;
+        }
+
+        .right-column {
+            flex: 1;
+            padding: 30px 30px;
+            background: #f9f9f9;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4a69bd;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Experience Items */
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .job-title-company {
+            flex: 1;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .company-name {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-location-date {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #666;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .job-description {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .job-missions {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .job-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-content li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .job-content li:before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Right Column Styles */
+        .right-section {
+            margin-bottom: 25px;
+        }
+
+        .right-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .right-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a69bd;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Skills Pills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-pill {
+            background: #4a69bd;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Competences List */
+        .competences-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .competences-list li {
+            padding: 5px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .competences-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Languages */
+        .language-item {
+            margin-bottom: 15px;
+        }
+
+        .language-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .language-level {
+            display: flex;
+            gap: 3px;
+        }
+
+        .level-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #4a69bd;
+        }
+
+        .level-dot.filled {
+            background: #4a69bd;
+        }
+
+        /* Interests Pills */
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .interest-pill {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .education-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .education-school {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e74c3c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .left-column {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            .right-column {
+                background: white;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 10px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .left-column, .right-column {
+                padding: 20px;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .job-location-date {
+                text-align: left;
+                margin-left: 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                margin: 0;
+                max-width: none;
+            }
+            
+            .skill-pill {
+                background: #333 !important;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .level-dot, .level-dot.filled {
+                border-color: #333 !important;
+                background: #333 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="photo-container">
+                <div class="photo-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            <div class="header-content">
+                <h1 class="name">[Your Full Name]</h1>
+                <h2 class="title">[Your Professional Title]</h2>
+                <p class="summary">
+                    [Write a compelling professional summary describing your experience, skills, and career objectives. Focus on what makes you unique and the value you bring to organizations. Keep it concise but impactful.]
+                </p>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>your.email@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>City, Country</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/yourprofile</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/yourusername</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Professional Experience -->
+                <div class="section">
+                    <h3 class="section-title">Professional Experience</h3>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title-company">
+                                <div class="status-indicator">
+                                    <span class="status-dot"></span>
+                                    <h4 class="job-title">[Current Job Title] - [Department/Specialty]</h4>
+                                </div>
+                                <div class="company-name">[Company Name] - [Company Website/Domain]</div>
+                            </div>
+                            <div class="job-location-date">
+                                <div>[City], [Country]</div>
+                            </div>
+                        </div>
+                        <div class="status-indicator" style="margin-bottom: 10px;">
+                            <span>[Start Date] - Present</span>
+                        </div>
+                        <p class="job-description">[Brief description of the company and your role context]</p>
+                        
+                        <div class="job-missions">Missions:</div>
+                        <div class="job-content">
+                            <ul>
+                                <li>[Key responsibility or achievement with specific metrics/impact]</li>
+                                <li>[Another major accomplishment or project you led/contributed to]</li>
+                                <li>[Technical implementation or process improvement you made]</li>
+                                <li>[Collaboration or leadership experience]</li>
+                                <li>[Additional relevant responsibility or skill demonstration]</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title-company">
+                                <h4 class="job-title">[Previous Job Title] - [Specialty/Type]</h4>
+                                <div class="company-name">[Previous Company Name]</div>
+                            </div>
+                            <div class="job-location-date">
+                                <div>[City], [Country]</div>
+                            </div>
+                        </div>
+                        <div class="status-indicator" style="margin-bottom: 10px;">
+                            <span>[Start Date] - Present</span>
+                        </div>
+                        <p class="job-description">[Brief description of the company/organization and your role]</p>
+                        
+                        <div class="job-missions">Missions:</div>
+                        <div class="job-content">
+                            <ul>
+                                <li>[Key responsibility in this role]</li>
+                                <li>[Another important contribution or project]</li>
+                                <li>[Skills developed or applied in this position]</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title-company">
+                                <div class="status-indicator">
+                                    <span class="status-dot"></span>
+                                    <h4 class="job-title">[Earlier Job Title] / [Alternative Title]</h4>
+                                </div>
+                                <div class="company-name">[Company Name] ([Former Name], [Another Former Name])</div>
+                            </div>
+                            <div class="job-location-date">
+                                <div>[City], [Country]</div>
+                            </div>
+                        </div>
+                        <div class="status-indicator" style="margin-bottom: 10px;">
+                            <span>[Start Date] - [End Date]</span>
+                        </div>
+                        <p class="job-description">[Description of the company and your role in this position]</p>
+                        
+                        <div class="job-missions">Missions:</div>
+                        <div class="job-content">
+                            <ul>
+                                <li>[Major project or responsibility from this role]</li>
+                                <li>[Technical or strategic contribution you made]</li>
+                                <li>[Process or system improvements you implemented]</li>
+                                <li>[Team collaboration or client interaction experience]</li>
+                                <li>[Skills or knowledge gained in this position]</li>
+                                <li>[Additional achievements or responsibilities]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="section">
+                    <h3 class="section-title">Education</h3>
+                    
+                    <div class="education-item">
+                        <h4 class="education-title">[Degree/Certification Name] - [Specialization] Level [X]</h4>
+                        <div class="education-school">[Institution Name]</div>
+                        <div class="education-details">
+                            <span>[Start Date] - [End Date]</span>
+                            <span>[City], [Country]</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h4 class="education-title">[Previous Degree] in [Field] - [Specialization] and [Second Specialization] -</h4>
+                        <div class="education-school">[University Name] ([Country]) - [Partner Institution Name] ([Country])</div>
+                        <div class="education-details">
+                            <span>[Start Year] - [End Year]</span>
+                            <span>[City], [Country] / [Second City], [State], [Country]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Technical Skills -->
+                <div class="right-section">
+                    <h3 class="right-section-title">Technical Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-pill">REST API</span>
+                        <span class="skill-pill">Ruby</span>
+                        <span class="skill-pill">Rails</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">HTML</span>
+                        <span class="skill-pill">CSS</span>
+                        <span class="skill-pill">Bootstrap</span>
+                        <span class="skill-pill">Heroku</span>
+                    </div>
+                </div>
+
+                <!-- Core Competencies -->
+                <div class="right-section">
+                    <h3 class="right-section-title">Core Competencies</h3>
+                    <ul class="competences-list">
+                        <li>[Technology] Development - [Level/Type]</li>
+                        <li>[Management Type], Training and Support</li>
+                        <li>Technical Implementation of [Specific Area] Projects</li>
+                        <li>Operational Team Management</li>
+                        <li>International Culture</li>
+                        <li>Data Analysis</li>
+                        <li>Service Orientation</li>
+                    </ul>
+                </div>
+
+                <!-- Languages -->
+                <div class="right-section">
+                    <h3 class="right-section-title">Languages</h3>
+                    
+                    <div class="language-item">
+                        <div class="language-name">[Language] (Native - [Country])</div>
+                        <div class="language-level">
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-item">
+                        <div class="language-name">[Second Language]</div>
+                        <div class="language-level">
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot"></span>
+                        </div>
+                    </div>
+
+                    <div class="language-item">
+                        <div class="language-name">[Third Language]</div>
+                        <div class="language-level">
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot filled"></span>
+                            <span class="level-dot"></span>
+                            <span class="level-dot"></span>
+                            <span class="level-dot"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests -->
+                <div class="right-section">
+                    <h3 class="right-section-title">Interests</h3>
+                    <div class="interests-container">
+                        <span class="interest-pill">[Interest 1]</span>
+                        <span class="interest-pill">[Interest 2]</span>
+                        <span class="interest-pill">[Interest 3]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
