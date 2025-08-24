@@ -61,6 +61,14 @@
             overflow: hidden;
         }
 
+        .photo-placeholder img {
+          width: 100%;       /* fill the container */
+          height: 100%;      /* fill the container */
+          object-fit: cover; /* crop to cover the circle */
+          object-position: 30% 30%; /* x% horizontal, y% vertical */
+          display: block;    /* remove inline spacing issues */
+        }
+
         .header-content {
             flex: 1;
         }
