@@ -105,10 +105,17 @@
             border-bottom: 1px solid #ddd;
         }
 
-        .contact-grid {
+        /* .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
+        } */
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
         }
 
         .contact-item {
