@@ -435,6 +435,8 @@
         @media print {
             body {
                 background: white;
+                margin: 0;
+                padding: 0;
             }
             
             .resume-container {
@@ -443,14 +445,25 @@
                 max-width: none;
             }
             
+            /* Preserve your blue colors in print */
             .skill-pill {
-                background: #333 !important;
+                background: #8f9cc9 !important;
+                color: white !important;
                 -webkit-print-color-adjust: exact;
             }
             
-            .level-dot, .level-dot.filled {
-                border-color: #333 !important;
-                background: #333 !important;
+            .level-dot {
+                border-color: #4a69bd !important;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .level-dot.filled {
+                background: #4a69bd !important;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .section-title, .right-section-title {
+                color: #4a69bd !important;
                 -webkit-print-color-adjust: exact;
             }
         }
